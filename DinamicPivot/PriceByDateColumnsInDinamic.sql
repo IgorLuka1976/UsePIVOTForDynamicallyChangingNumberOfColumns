@@ -18,7 +18,7 @@ FROM Production.TransactionHistoryArchive
 WHERE TransactionDate>=@startDate AND TransactionDate<@endDate
 )
 SELECT 
-   @listOFDays= STRING_AGG('['+CONVERT(VARCHAR(MAX),CONVERT(DATE,TransactionDate))+']', ',')-- AS csv 
+   @listOFDays= STRING_AGG('['+CONVERT(VARCHAR(MAX),CONVERT(DATE,TransactionDate))+']', ',')
  FROM allDates
 
 ------Create List for filter
@@ -32,7 +32,7 @@ FROM Production.TransactionHistoryArchive
 WHERE TransactionDate>=@startDate AND TransactionDate<@endDate
 )
 SELECT 
-   @filter= STRING_AGG('['+CONVERT(VARCHAR(MAX),CONVERT(DATE,TransactionDate))+'] IS NULL', ' AND ')-- AS csv 
+   @filter= STRING_AGG('['+CONVERT(VARCHAR(MAX),CONVERT(DATE,TransactionDate))+'] IS NULL', ' AND ')
  FROM allDates
 
  ------For Get Dinamic columns use Select in EXECUTE 'SELECT... '
